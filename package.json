@@ -1,0 +1,60 @@
+{
+    "name": "fast-element-starter",
+    "version": "1.0.0",
+    "description": "A fast-element starter project",
+    "main": "dist/index.es.js",
+    "module": "dist/index.umd.js",
+    "exports": {
+        ".": {
+            "import": "./index.es.js",
+            "require": "./index.umd.js"
+        }
+    },
+    "files": [
+        "dist/",
+        "custom-elements.json"
+    ],
+    "scripts": {
+        "clean": "rimraf dist",
+        "dev": "run-p manifest:dev storybook",
+        "serve": "vite --open",
+        "build": "npm run clean && vite build && tsc --emitDeclarationOnly && npm run manifest",
+        "test": "web-test-runner",
+        "test:watch": "web-test-runner --watch",
+        "storybook": "start-storybook -p 6006",
+        "build-storybook": "build-storybook",
+        "manifest:dev": "cem analyze --watch --fast --globs \"./src/**/index.ts\"",
+        "manifest": "cem analyze --fast --globs \"./src/**/index.ts\""
+    },
+    "author": "",
+    "license": "MIT",
+    "devDependencies": {
+        "@babel/core": "^7.16.12",
+        "@custom-elements-manifest/analyzer": "^0.5.7",
+        "@esm-bundle/chai": "^4.3.4-fix.0",
+        "@open-wc/testing": "^3.0.3",
+        "@storybook/addon-a11y": "^6.4.14",
+        "@storybook/addon-actions": "^6.4.14",
+        "@storybook/addon-controls": "^6.4.14",
+        "@storybook/addon-essentials": "^6.4.14",
+        "@storybook/addon-links": "^6.4.14",
+        "@storybook/web-components": "^6.4.14",
+        "@web/dev-server": "^0.1.29",
+        "@web/dev-server-esbuild": "^0.2.16",
+        "@web/test-runner": "^0.13.26",
+        "@web/test-runner-playwright": "^0.8.8",
+        "babel-loader": "^8.2.3",
+        "lit-html": "^2.1.2",
+        "npm-run-all": "^4.1.5",
+        "rimraf": "^3.0.2",
+        "rollup-plugin-transform-tagged-template": "^0.0.3",
+        "storybook-builder-vite": "^0.1.13",
+        "tslib": "^2.3.1",
+        "typescript": "^4.5.5",
+        "vite": "^2.7.13"
+    },
+    "dependencies": {
+        "@microsoft/fast-element": "^1.7.0"
+    },
+    "customElements": "custom-elements.json"
+}
